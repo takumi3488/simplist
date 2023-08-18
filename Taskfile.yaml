@@ -3,7 +3,7 @@ version: "3"
 tasks:
   default:
     cmds:
-      - go run main.go
+      - go run server.go
   
   fmt:
     cmds:
@@ -15,4 +15,4 @@ tasks:
   
   build:
     cmds:
-      - go build -o bin/main main.go
+      - go build -o bin/server server.go

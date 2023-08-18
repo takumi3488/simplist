@@ -11,18 +11,18 @@ RUN go install github.com/cweill/gotests/gotests@latest && \
     go install honnef.co/go/tools/cmd/staticcheck@latest && \
     go install golang.org/x/tools/gopls@latest && \
     go install github.com/go-task/task/v3/cmd/task@latest
-CMD [ "go", "run", "main.go" ]
+CMD [ "go", "run", "server.go" ]
 
 
 FROM golang:1.21.0-alpine3.18 AS build
 WORKDIR /app
 COPY . .
 RUN go mod download
-RUN CGO_ENABLED=0 GOOS=linux go build -o main .
+RUN CGO_ENABLED=0 GOOS=linux go build -o server .
 
 
 FROM scratch AS prod
 WORKDIR /app
-COPY --from=build /app/main .
+COPY --from=build /app/server .
 
-CMD [ "./main" ]
+CMD [ "./server" ]
