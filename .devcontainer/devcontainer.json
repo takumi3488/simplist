@@ -1,0 +1,17 @@
+{
+	"dockerComposeFile": ["../compose.yml", "compose.yml"],
+	"service": "app",
+	"workspaceFolder": "/app",
+	"forwardPorts": [
+		8080
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"golang.go",
+				"zxh404.vscode-proto3",
+				"GitHub.copilot"
+			]
+		}
+	}
+}

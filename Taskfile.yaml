@@ -1,0 +1,18 @@
+# For more information, visit https://taskfile.dev
+version: "3"
+tasks:
+  default:
+    cmds:
+      - go run main.go
+  
+  fmt:
+    cmds:
+      - go fmt ./...
+  
+  test:
+    cmds:
+      - go test ./...
+  
+  build:
+    cmds:
+      - go build -o bin/main main.go
