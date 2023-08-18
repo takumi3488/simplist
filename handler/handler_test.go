@@ -65,7 +65,7 @@ func TestGetLists(t *testing.T) {
 	defer resetDB(db)
 	h := &Handler{db}
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/lists", nil)
+	req := httptest.NewRequest(http.MethodGet, "/", nil)
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
@@ -80,7 +80,7 @@ func TestGetList(t *testing.T) {
 	defer resetDB(db)
 	h := &Handler{db}
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/lists/foo", nil)
+	req := httptest.NewRequest(http.MethodGet, "/foo", nil)
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
@@ -97,7 +97,7 @@ func TestUpdateList(t *testing.T) {
 	defer resetDB(db)
 	h := &Handler{db}
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodPut, "/lists/foo", strings.NewReader(`{"items":["a","b","c"]}`))
+	req := httptest.NewRequest(http.MethodPut, "/foo", strings.NewReader(`{"items":["a","b","c"]}`))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)

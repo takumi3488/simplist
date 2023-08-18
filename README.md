@@ -13,13 +13,13 @@ docker run --env KEYS="foo,bar" --env DB_URL="<YOUR_DB_URL>" -p 8080:8080 takumi
 
 全て取得
 ```
-$ curl localhost:8080/lists
+$ curl localhost:8080
 [{"key":"foo","items":[]},{"key":"bar","items":[]}]
 ```
 
 1つ取得
 ```
-$ curl localhost:8080/lists/foo
+$ curl localhost:8080/foo
 {"key":"foo","items":[]}
 ```
 
@@ -28,8 +28,8 @@ $ curl localhost:8080/lists/foo
 $ curl -X PUT \
     -H "Content-Type:application/json" \
     -d '{"items":["a","b","c"]}' \
-    localhost:8080/lists/foo
-$ curl localhost:8080/lists/foo
+    localhost:8080/foo
+$ curl localhost:8080/foo
 {"key":"foo","items":["a","b","c"]}
 ```
 

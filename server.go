@@ -40,8 +40,8 @@ func main() {
 
 	// Echoを起動する
 	e := echo.New()
-	e.GET("/lists", h.GetLists)
-	e.GET("/lists/:key", h.GetList)
-	e.PUT("/lists/:key", h.UpdateList)
+	e.GET("/", h.GetLists)
+	e.GET("/:key", h.GetList)
+	e.PUT("/:key", h.UpdateList)
 	e.Logger.Fatal(e.Start(":8080"))
 }
