@@ -21,7 +21,7 @@ func main() {
 	h := &handler.Handler{DB: db}
 
 	// テーブルを作成する
-	createTable := `CREATE TABLE lists (
+	createTable := `CREATE TABLE IF NOT EXISTS lists (
 		key TEXT PRIMARY KEY, items TEXT[] DEFAULT '{}' NOT NULL
 	)`
 	if _, err := db.Exec(createTable); err != nil {
