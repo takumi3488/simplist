@@ -2,6 +2,7 @@ package handler
 
 import (
 	"database/sql"
+	"log"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -20,6 +21,8 @@ type Handler struct {
 }
 
 func (h *Handler) GetLists(c echo.Context) error {
+	log.Println("GetLists")
+
 	var lists []List
 	rows, err := h.DB.Query(`SELECT * FROM lists`)
 	if err != nil {
@@ -41,6 +44,8 @@ func (h *Handler) GetLists(c echo.Context) error {
 }
 
 func (h *Handler) GetList(c echo.Context) error {
+	log.Panicln("GetList")
+
 	key := c.Param("key")
 	var items []string
 	if err := h.DB.QueryRow(`SELECT items FROM lists WHERE key = $1`, key).Scan(pq.Array(&items)); err != nil {
@@ -54,6 +59,8 @@ func (h *Handler) GetList(c echo.Context) error {
 }
 
 func (h *Handler) UpdateList(c echo.Context) error {
+	log.Println("UpdateList")
+
 	key := c.Param("key")
 	var req ListCreateRequest
 	if err := c.Bind(&req); err != nil {

@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"log"
 	"os"
 	"simplist/handler"
 	"strings"
@@ -33,6 +34,7 @@ func main() {
 		if k == "" {
 			continue
 		}
+		log.Printf("Inserting key: %s", k)
 		if _, err := db.Exec(`INSERT INTO lists (key) VALUES ($1) ON CONFLICT (key) DO NOTHING`, k); err != nil {
 			panic(err)
 		}
