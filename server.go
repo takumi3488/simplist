@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 
 	_ "github.com/lib/pq"
 )
@@ -40,6 +41,9 @@ func main() {
 
 	// Echoを起動する
 	e := echo.New()
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+        Format: "time=${time_rfc3339_nano}, method=${method}, uri=${uri}, status=${status}\n",
+    }))
 	e.GET("/", h.GetLists)
 	e.GET("/:key", h.GetList)
 	e.PUT("/:key", h.UpdateList)
