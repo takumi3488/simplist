@@ -106,6 +106,9 @@ func TestUpdateList(t *testing.T) {
 	if assert.NoError(t, h.UpdateList(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 		assert.Empty(t, rec.Body.String())
-
+		if assert.NoError(t, h.GetList(c)) {
+			assert.Equal(t, http.StatusOK, rec.Code)
+			assert.JSONEq(t, `{"key":"foo","items":["a","b","c"]}`, rec.Body.String())
+		}
 	}
 }
