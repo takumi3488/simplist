@@ -4,15 +4,15 @@ tasks:
   default:
     cmds:
       - go run server.go
-  
+
   fmt:
     cmds:
       - go fmt ./...
-  
+
   test:
     cmds:
       - go test ./...
-  
+
   build:
     cmds:
       - go build -o bin/server server.go
