@@ -1,4 +1,4 @@
-FROM golang:1.21.0-alpine3.18 AS dev
+FROM golang:1.22.3-alpine3.18 AS dev
 WORKDIR /app
 RUN apk update && apk add --no-cache git postgresql-client
 COPY . .
@@ -14,7 +14,7 @@ RUN go install github.com/cweill/gotests/gotests@latest && \
 CMD [ "go", "run", "server.go" ]
 
 
-FROM golang:1.21.0-alpine3.18 AS build
+FROM golang:1.22.3-alpine3.18 AS build
 WORKDIR /app
 COPY . .
 RUN go mod download
