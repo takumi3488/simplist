@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	github.com/labstack/echo/v4 v4.15.0
 	github.com/labstack/echo/v5 v5.0.4
-	github.com/lib/pq v1.10.9
+	github.com/lib/pq v1.11.2
 	github.com/stretchr/testify v1.11.1
 )
 
