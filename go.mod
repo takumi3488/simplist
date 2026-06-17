@@ -3,7 +3,7 @@ module simplist
 go 1.25.0
 
 require (
-	github.com/labstack/echo/v4 v4.15.4
+	github.com/labstack/echo/v5 v5.2.1
 	github.com/labstack/echo/v5 v5.2.1
 	github.com/lib/pq v1.12.3
 	github.com/stretchr/testify v1.11.1
